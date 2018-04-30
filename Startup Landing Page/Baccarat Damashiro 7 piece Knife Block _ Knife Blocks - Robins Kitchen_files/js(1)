@@ -1,0 +1,444 @@
+Type.registerNamespace('CSSNET');
+CSSNET.WebServicesAjax=function() {
+CSSNET.WebServicesAjax.initializeBase(this);
+this._timeout = 0;
+this._userContext = null;
+this._succeeded = null;
+this._failed = null;
+}
+CSSNET.WebServicesAjax.prototype={
+_get_path:function() {
+ var p = this.get_path();
+ if (p) return p;
+ else return CSSNET.WebServicesAjax._staticInstance.get_path();},
+GetProductAttributeValues:function(inputIdx,productCode,selectedTitleValue,selectDefaultProduct,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetProductAttributeValues',false,{inputIdx:inputIdx,productCode:productCode,selectedTitleValue:selectedTitleValue,selectDefaultProduct:selectDefaultProduct},succeededCallback,failedCallback,userContext); },
+GetProductAttributePrice:function(productCode,attributeSequence,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetProductAttributePrice',false,{productCode:productCode,attributeSequence:attributeSequence},succeededCallback,failedCallback,userContext); },
+GetProductAttributePriceGst:function(productCode,attributeSequence,priceTaxType,priceType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetProductAttributePriceGst',false,{productCode:productCode,attributeSequence:attributeSequence,priceTaxType:priceTaxType,priceType:priceType},succeededCallback,failedCallback,userContext); },
+GetProductAttributeAvailability:function(productCode,attributeSequence,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetProductAttributeAvailability',false,{productCode:productCode,attributeSequence:attributeSequence},succeededCallback,failedCallback,userContext); },
+GetAdminProductSuggestionItems:function(context,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetAdminProductSuggestionItems',false,{context:context},succeededCallback,failedCallback,userContext); },
+GetProductSuggestionsItems:function(context,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetProductSuggestionsItems',false,{context:context},succeededCallback,failedCallback,userContext); },
+GetProductDataForSelecteItem:function(productCodeTextBoxID,productCode,qty,orderNo,orderSuffix,orderGridMode,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetProductDataForSelecteItem',false,{productCodeTextBoxID:productCodeTextBoxID,productCode:productCode,qty:qty,orderNo:orderNo,orderSuffix:orderSuffix,orderGridMode:orderGridMode},succeededCallback,failedCallback,userContext); },
+PredictiveSearch:function(q,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'PredictiveSearch',false,{q:q},succeededCallback,failedCallback,userContext); },
+PredictiveSearchJson:function(q,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'PredictiveSearchJson',false,{q:q},succeededCallback,failedCallback,userContext); },
+GetFreight:function(succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetFreight',false,{},succeededCallback,failedCallback,userContext); },
+SetFreight:function(freightOptionIDs,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SetFreight',false,{freightOptionIDs:freightOptionIDs},succeededCallback,failedCallback,userContext); },
+FreightCalculator:function(productCode,quantity,postCode,suburb,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'FreightCalculator',false,{productCode:productCode,quantity:quantity,postCode:postCode,suburb:suburb},succeededCallback,failedCallback,userContext); },
+GetPaymentOptions:function(succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetPaymentOptions',false,{},succeededCallback,failedCallback,userContext); },
+ApplyPaymentSurcharge:function(orderNo,paymentMethod,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ApplyPaymentSurcharge',false,{orderNo:orderNo,paymentMethod:paymentMethod},succeededCallback,failedCallback,userContext); },
+GetPaymentProviderTitles:function(succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetPaymentProviderTitles',false,{},succeededCallback,failedCallback,userContext); },
+ProcessPayment:function(paymentType,paymentInfo,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ProcessPayment',false,{paymentType:paymentType,paymentInfo:paymentInfo},succeededCallback,failedCallback,userContext); },
+SubmitQuote:function(succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SubmitQuote',false,{},succeededCallback,failedCallback,userContext); },
+EWayCreateAccessCode:function(clearRememberedPaymentInfo,orderNoForAccessCode,isAccountPayment,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'EWayCreateAccessCode',false,{clearRememberedPaymentInfo:clearRememberedPaymentInfo,orderNoForAccessCode:orderNoForAccessCode,isAccountPayment:isAccountPayment},succeededCallback,failedCallback,userContext); },
+AddAndTestGiftCardBeforeFundsTransfer:function(giftCardNumber,giftCardPin,useTotalAmount,amountToUse,customerPaymentReceiptNo,soOrderNo,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddAndTestGiftCardBeforeFundsTransfer',false,{giftCardNumber:giftCardNumber,giftCardPin:giftCardPin,useTotalAmount:useTotalAmount,amountToUse:amountToUse,customerPaymentReceiptNo:customerPaymentReceiptNo,soOrderNo:soOrderNo},succeededCallback,failedCallback,userContext); },
+RemoveGiftCardFromEnteredGiftCards:function(giftCardNumber,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'RemoveGiftCardFromEnteredGiftCards',false,{giftCardNumber:giftCardNumber},succeededCallback,failedCallback,userContext); },
+AutoSaveTemplateData:function(name,type,autoSaveData,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AutoSaveTemplateData',false,{name:name,type:type,autoSaveData:autoSaveData},succeededCallback,failedCallback,userContext); },
+RemoveAutoSaveReturnCurrentTemplateData:function(name,type,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'RemoveAutoSaveReturnCurrentTemplateData',false,{name:name,type:type},succeededCallback,failedCallback,userContext); },
+GetInitialTemplateDisplayContent:function(name,type,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetInitialTemplateDisplayContent',false,{name:name,type:type},succeededCallback,failedCallback,userContext); },
+GetAutoSaveTemplateData:function(name,type,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetAutoSaveTemplateData',false,{name:name,type:type},succeededCallback,failedCallback,userContext); },
+GetTemplateData:function(name,type,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetTemplateData',false,{name:name,type:type},succeededCallback,failedCallback,userContext); },
+GetTemplateRevisionData:function(templateHistoryID,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetTemplateRevisionData',false,{templateHistoryID:templateHistoryID},succeededCallback,failedCallback,userContext); },
+GetRefreshOfTemplateSettingSources:function(settingSource,showLookup,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetRefreshOfTemplateSettingSources',false,{settingSource:settingSource,showLookup:showLookup},succeededCallback,failedCallback,userContext); },
+AddTemplateSource:function(name,source,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddTemplateSource',false,{name:name,source:source},succeededCallback,failedCallback,userContext); },
+GetCategoryHierarchy:function(catalogueCode,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetCategoryHierarchy',false,{catalogueCode:catalogueCode},succeededCallback,failedCallback,userContext); },
+GetAdvancedCategoryDetails:function(catalogueCode,categoryCode,loadAvailableTemplates,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetAdvancedCategoryDetails',false,{catalogueCode:catalogueCode,categoryCode:categoryCode,loadAvailableTemplates:loadAvailableTemplates},succeededCallback,failedCallback,userContext); },
+GetClusterLineTypes:function(succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetClusterLineTypes',false,{},succeededCallback,failedCallback,userContext); },
+SaveAdvancedCatalogueData:function(catalogueCode,data,deletedCategories,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SaveAdvancedCatalogueData',false,{catalogueCode:catalogueCode,data:data,deletedCategories:deletedCategories},succeededCallback,failedCallback,userContext); },
+ValidateProductCodes:function(productCodes,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ValidateProductCodes',false,{productCodes:productCodes},succeededCallback,failedCallback,userContext); },
+Login:function(username,password,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'Login',false,{username:username,password:password},succeededCallback,failedCallback,userContext); },
+Logout:function(succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'Logout',false,{},succeededCallback,failedCallback,userContext); },
+IsLoggedIn:function(succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'IsLoggedIn',false,{},succeededCallback,failedCallback,userContext); },
+RegisterNewUser:function(username,password,doLogin,userRegistrationJsonFieldGroup,userGeneralJsonFieldGroupData,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'RegisterNewUser',false,{username:username,password:password,doLogin:doLogin,userRegistrationJsonFieldGroup:userRegistrationJsonFieldGroup,userGeneralJsonFieldGroupData:userGeneralJsonFieldGroupData},succeededCallback,failedCallback,userContext); },
+RegisterNewUserWithAddressDetails:function(username,password,doLogin,userRegistrationJsonFieldGroup,userGeneralJsonFieldGroupData,userAddressJsonFieldGroup,userAddressJsonFieldGroupData,addressRuleSet,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'RegisterNewUserWithAddressDetails',false,{username:username,password:password,doLogin:doLogin,userRegistrationJsonFieldGroup:userRegistrationJsonFieldGroup,userGeneralJsonFieldGroupData:userGeneralJsonFieldGroupData,userAddressJsonFieldGroup:userAddressJsonFieldGroup,userAddressJsonFieldGroupData:userAddressJsonFieldGroupData,addressRuleSet:addressRuleSet},succeededCallback,failedCallback,userContext); },
+ChangePassword:function(existingPwd,newPwd,newPwdCnfm,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ChangePassword',false,{existingPwd:existingPwd,newPwd:newPwd,newPwdCnfm:newPwdCnfm},succeededCallback,failedCallback,userContext); },
+ChangePasswordAndNotifyAddress:function(existingPwd,newPwd,newPwdCnfm,notifyEmailAdress,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ChangePasswordAndNotifyAddress',false,{existingPwd:existingPwd,newPwd:newPwd,newPwdCnfm:newPwdCnfm,notifyEmailAdress:notifyEmailAdress},succeededCallback,failedCallback,userContext); },
+RetrievePassword:function(username,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'RetrievePassword',false,{username:username},succeededCallback,failedCallback,userContext); },
+AddFavourite:function(productCode,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddFavourite',false,{productCode:productCode},succeededCallback,failedCallback,userContext); },
+GetCustomerWarningNote:function(customerCode,isAdminMode,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetCustomerWarningNote',false,{customerCode:customerCode,isAdminMode:isAdminMode},succeededCallback,failedCallback,userContext); },
+AccountSearch:function(searchString,skip,take,jsonFieldGroup,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AccountSearch',false,{searchString:searchString,skip:skip,take:take,jsonFieldGroup:jsonFieldGroup},succeededCallback,failedCallback,userContext); },
+SetCurrentAccount:function(accountCode,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SetCurrentAccount',false,{accountCode:accountCode},succeededCallback,failedCallback,userContext); },
+ProductSearch:function(searchString,skip,take,orderBy,requestedDeliveryDate,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ProductSearch',false,{searchString:searchString,skip:skip,take:take,orderBy:orderBy,requestedDeliveryDate:requestedDeliveryDate},succeededCallback,failedCallback,userContext); },
+ProductSearchWithFilter:function(searchString,filter,skip,take,orderBy,requestedDeliveryDate,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ProductSearchWithFilter',false,{searchString:searchString,filter:filter,skip:skip,take:take,orderBy:orderBy,requestedDeliveryDate:requestedDeliveryDate},succeededCallback,failedCallback,userContext); },
+ProductSearchWithListTemplate:function(searchString,filter,skip,take,listTemplateName,orderBy,requestedDeliveryDate,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ProductSearchWithListTemplate',false,{searchString:searchString,filter:filter,skip:skip,take:take,listTemplateName:listTemplateName,orderBy:orderBy,requestedDeliveryDate:requestedDeliveryDate},succeededCallback,failedCallback,userContext); },
+GetProductDetail:function(productCode,requestedDeliveryDate,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetProductDetail',false,{productCode:productCode,requestedDeliveryDate:requestedDeliveryDate},succeededCallback,failedCallback,userContext); },
+GetCategoryDetail:function(categoryCode,skip,take,requestedDeliveryDate,jsonFieldGroup,jsonFieldGroupCurrentCategoryOverride,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetCategoryDetail',false,{categoryCode:categoryCode,skip:skip,take:take,requestedDeliveryDate:requestedDeliveryDate,jsonFieldGroup:jsonFieldGroup,jsonFieldGroupCurrentCategoryOverride:jsonFieldGroupCurrentCategoryOverride},succeededCallback,failedCallback,userContext); },
+GetProductCompanions:function(productCode,skip,take,requestedDeliveryDate,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetProductCompanions',false,{productCode:productCode,skip:skip,take:take,requestedDeliveryDate:requestedDeliveryDate},succeededCallback,failedCallback,userContext); },
+GetProductAlternates:function(productCode,skip,take,requestedDeliveryDate,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetProductAlternates',false,{productCode:productCode,skip:skip,take:take,requestedDeliveryDate:requestedDeliveryDate},succeededCallback,failedCallback,userContext); },
+GetProductAccessories:function(productCode,skip,take,requestedDeliveryDate,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetProductAccessories',false,{productCode:productCode,skip:skip,take:take,requestedDeliveryDate:requestedDeliveryDate},succeededCallback,failedCallback,userContext); },
+GetProductAlternatesStatus:function(productCode,checkAlternates,checkAccessories,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetProductAlternatesStatus',false,{productCode:productCode,checkAlternates:checkAlternates,checkAccessories:checkAccessories},succeededCallback,failedCallback,userContext); },
+GetCompanionProductOptions:function(masterProductCode,orderLineSeq,fieldsUsedForAlternatives,selectedCampProdCode,skip,take,productJsonFieldGroup,companionProdJsonFieldGroup,requestedDeliveryDate,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetCompanionProductOptions',false,{masterProductCode:masterProductCode,orderLineSeq:orderLineSeq,fieldsUsedForAlternatives:fieldsUsedForAlternatives,selectedCampProdCode:selectedCampProdCode,skip:skip,take:take,productJsonFieldGroup:productJsonFieldGroup,companionProdJsonFieldGroup:companionProdJsonFieldGroup,requestedDeliveryDate:requestedDeliveryDate},succeededCallback,failedCallback,userContext); },
+SimpleAdminProductSearch:function(searchTerm,take,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SimpleAdminProductSearch',false,{searchTerm:searchTerm,take:take},succeededCallback,failedCallback,userContext); },
+GetProductDetailWithConfigurableKitOptions:function(productCode,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetProductDetailWithConfigurableKitOptions',false,{productCode:productCode},succeededCallback,failedCallback,userContext); },
+GetKitConfigurationOptionsForProductOrOrderLine:function(productCode,lineSeq,serverTemplate,getMandatoryComponents,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetKitConfigurationOptionsForProductOrOrderLine',false,{productCode:productCode,lineSeq:lineSeq,serverTemplate:serverTemplate,getMandatoryComponents:getMandatoryComponents},succeededCallback,failedCallback,userContext); },
+SetProductSelctedKitConfigurationOptions:function(prodcode,configurableBomLineTypesAndCompCodes,optionalCompCodesAndInput,lineSeq,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SetProductSelctedKitConfigurationOptions',false,{prodcode:prodcode,configurableBomLineTypesAndCompCodes:configurableBomLineTypesAndCompCodes,optionalCompCodesAndInput:optionalCompCodesAndInput,lineSeq:lineSeq},succeededCallback,failedCallback,userContext); },
+GetOrderDetail:function(orderNumber,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetOrderDetail',false,{orderNumber:orderNumber},succeededCallback,failedCallback,userContext); },
+GetCurrentOrder:function(succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetCurrentOrder',false,{},succeededCallback,failedCallback,userContext); },
+GetCurrentCustomerOrderDefaults:function(succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetCurrentCustomerOrderDefaults',false,{},succeededCallback,failedCallback,userContext); },
+UpdateCurrentOrderDeliveryAddress:function(deliveryAddressJsonFieldGroup,deliveryAddressJsonFieldGroupData,delivMethodSeqValueForLookup,setDeliveryOptions,pickListOptionSelected,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'UpdateCurrentOrderDeliveryAddress',false,{deliveryAddressJsonFieldGroup:deliveryAddressJsonFieldGroup,deliveryAddressJsonFieldGroupData:deliveryAddressJsonFieldGroupData,delivMethodSeqValueForLookup:delivMethodSeqValueForLookup,setDeliveryOptions:setDeliveryOptions,pickListOptionSelected:pickListOptionSelected},succeededCallback,failedCallback,userContext); },
+AddToCurrentOrder:function(productCode,quantity,attributes,notes,noteIsExtendedLineDescription,price,discount,requestedDeliveryDate,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddToCurrentOrder',false,{productCode:productCode,quantity:quantity,attributes:attributes,notes:notes,noteIsExtendedLineDescription:noteIsExtendedLineDescription,price:price,discount:discount,requestedDeliveryDate:requestedDeliveryDate},succeededCallback,failedCallback,userContext); },
+AddToCurrentOrderWithFieldGroup:function(productCode,quantity,attributes,notes,noteIsExtendedLineDescription,price,discount,requestedDeliveryDate,orderJsonFieldGroup,orderLineJsonFieldGroup,customSetJsonFieldGroup,orderLineJsonFieldData,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddToCurrentOrderWithFieldGroup',false,{productCode:productCode,quantity:quantity,attributes:attributes,notes:notes,noteIsExtendedLineDescription:noteIsExtendedLineDescription,price:price,discount:discount,requestedDeliveryDate:requestedDeliveryDate,orderJsonFieldGroup:orderJsonFieldGroup,orderLineJsonFieldGroup:orderLineJsonFieldGroup,customSetJsonFieldGroup:customSetJsonFieldGroup,orderLineJsonFieldData:orderLineJsonFieldData},succeededCallback,failedCallback,userContext); },
+AddToCurrentUserStocktake:function(productCode,quantity,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddToCurrentUserStocktake',false,{productCode:productCode,quantity:quantity},succeededCallback,failedCallback,userContext); },
+ChangeCurrentOrderLine:function(sequence,qty,price,discount,deliveryDate,notes,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ChangeCurrentOrderLine',false,{sequence:sequence,qty:qty,price:price,discount:discount,deliveryDate:deliveryDate,notes:notes},succeededCallback,failedCallback,userContext); },
+ChangeCurrentOrderLineWithCustomFields:function(sequence,qty,price,discount,deliveryDate,notes,customSetJsonFieldGroup,orderLineJsonFieldData,orderJsonFieldGroup,orderLineJsonFieldGroup,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ChangeCurrentOrderLineWithCustomFields',false,{sequence:sequence,qty:qty,price:price,discount:discount,deliveryDate:deliveryDate,notes:notes,customSetJsonFieldGroup:customSetJsonFieldGroup,orderLineJsonFieldData:orderLineJsonFieldData,orderJsonFieldGroup:orderJsonFieldGroup,orderLineJsonFieldGroup:orderLineJsonFieldGroup},succeededCallback,failedCallback,userContext); },
+ChangeCurrentOrderLines:function(newLineInfo,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ChangeCurrentOrderLines',false,{newLineInfo:newLineInfo},succeededCallback,failedCallback,userContext); },
+ChangeCurrentOrderLinesWithCustomFields:function(customSetJsonFieldGroup,orderLineJsonFieldData,orderJsonFieldGroup,orderLineJsonFieldGroup,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ChangeCurrentOrderLinesWithCustomFields',false,{customSetJsonFieldGroup:customSetJsonFieldGroup,orderLineJsonFieldData:orderLineJsonFieldData,orderJsonFieldGroup:orderJsonFieldGroup,orderLineJsonFieldGroup:orderLineJsonFieldGroup},succeededCallback,failedCallback,userContext); },
+DeleteCurrentOrderLine:function(sequence,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'DeleteCurrentOrderLine',false,{sequence:sequence},succeededCallback,failedCallback,userContext); },
+DeleteCurrentOrderLineWithFieldGroup:function(sequence,orderJsonFieldGroup,orderLineJsonFieldGroup,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'DeleteCurrentOrderLineWithFieldGroup',false,{sequence:sequence,orderJsonFieldGroup:orderJsonFieldGroup,orderLineJsonFieldGroup:orderLineJsonFieldGroup},succeededCallback,failedCallback,userContext); },
+SaveCurrentOrderAsTemplate:function(templateName,allcust,allreps,CustTemplate,globalCustomerMask,roleTemplate,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SaveCurrentOrderAsTemplate',false,{templateName:templateName,allcust:allcust,allreps:allreps,CustTemplate:CustTemplate,globalCustomerMask:globalCustomerMask,roleTemplate:roleTemplate},succeededCallback,failedCallback,userContext); },
+PutCurrentOrderOnHold:function(succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'PutCurrentOrderOnHold',false,{},succeededCallback,failedCallback,userContext); },
+AddOrderLineNotes:function(sequence,notes,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddOrderLineNotes',false,{sequence:sequence,notes:notes},succeededCallback,failedCallback,userContext); },
+AddOrderLineNotesWithFieldGroup:function(sequence,notes,orderJsonFieldGroup,orderLineJsonFieldGroup,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddOrderLineNotesWithFieldGroup',false,{sequence:sequence,notes:notes,orderJsonFieldGroup:orderJsonFieldGroup,orderLineJsonFieldGroup:orderLineJsonFieldGroup},succeededCallback,failedCallback,userContext); },
+DeleteOrderLineNotes:function(sequences,resequenceLines,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'DeleteOrderLineNotes',false,{sequences:sequences,resequenceLines:resequenceLines},succeededCallback,failedCallback,userContext); },
+DeleteOrderLineNotesWithFieldGroup:function(sequences,orderJsonFieldGroup,orderLineJsonFieldGroup,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'DeleteOrderLineNotesWithFieldGroup',false,{sequences:sequences,orderJsonFieldGroup:orderJsonFieldGroup,orderLineJsonFieldGroup:orderLineJsonFieldGroup},succeededCallback,failedCallback,userContext); },
+UpdateOrderLineNote:function(sequence,note,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'UpdateOrderLineNote',false,{sequence:sequence,note:note},succeededCallback,failedCallback,userContext); },
+UpdateOrderLineNoteWithFieldGroup:function(sequence,note,orderJsonFieldGroup,orderLineJsonFieldGroup,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'UpdateOrderLineNoteWithFieldGroup',false,{sequence:sequence,note:note,orderJsonFieldGroup:orderJsonFieldGroup,orderLineJsonFieldGroup:orderLineJsonFieldGroup},succeededCallback,failedCallback,userContext); },
+AddCompanionProductToCurrentOrder:function(parentLineSeq,masterProductCode,companionProductCode,qty,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddCompanionProductToCurrentOrder',false,{parentLineSeq:parentLineSeq,masterProductCode:masterProductCode,companionProductCode:companionProductCode,qty:qty},succeededCallback,failedCallback,userContext); },
+AddCompanionProductsToCurrentOrder:function(parentLineSeq,masterProductCode,companProdsAndQty,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddCompanionProductsToCurrentOrder',false,{parentLineSeq:parentLineSeq,masterProductCode:masterProductCode,companProdsAndQty:companProdsAndQty},succeededCallback,failedCallback,userContext); },
+SetCurrentOrderLineCustomItemOptions:function(sequence,customItemOptions,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SetCurrentOrderLineCustomItemOptions',false,{sequence:sequence,customItemOptions:customItemOptions},succeededCallback,failedCallback,userContext); },
+SetCurrentOrderLineUserImage:function(sequence,userImageId,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SetCurrentOrderLineUserImage',false,{sequence:sequence,userImageId:userImageId},succeededCallback,failedCallback,userContext); },
+GetOrderLinesMissingMandatoryCompanionProducts:function(succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetOrderLinesMissingMandatoryCompanionProducts',false,{},succeededCallback,failedCallback,userContext); },
+ValidateCurrentOrderForCheckout:function(succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ValidateCurrentOrderForCheckout',false,{},succeededCallback,failedCallback,userContext); },
+ApplyCurrentOrderPromotionalCode:function(promoCode,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ApplyCurrentOrderPromotionalCode',false,{promoCode:promoCode},succeededCallback,failedCallback,userContext); },
+RemoveCurrentOrderPromotionalCode:function(promoCode,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'RemoveCurrentOrderPromotionalCode',false,{promoCode:promoCode},succeededCallback,failedCallback,userContext); },
+ApplyPreExistingPromotionalCodes:function(succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'ApplyPreExistingPromotionalCodes',false,{},succeededCallback,failedCallback,userContext); },
+UpdateLivePromotionInfo:function(sequence,productCode,quantityTaken,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'UpdateLivePromotionInfo',false,{sequence:sequence,productCode:productCode,quantityTaken:quantityTaken},succeededCallback,failedCallback,userContext); },
+SetCurrentOrderPricingAccount:function(pricingAccount,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SetCurrentOrderPricingAccount',false,{pricingAccount:pricingAccount},succeededCallback,failedCallback,userContext); },
+GetActiveUserImagesForUserByType:function(skip,take,imageUseType,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetActiveUserImagesForUserByType',false,{skip:skip,take:take,imageUseType:imageUseType},succeededCallback,failedCallback,userContext); },
+GetParsedTemplate:function(templateName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetParsedTemplate',false,{templateName:templateName},succeededCallback,failedCallback,userContext); },
+GetCustomTableData:function(key,jsonFieldGroupName,skip,take,filter,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetCustomTableData',false,{key:key,jsonFieldGroupName:jsonFieldGroupName,skip:skip,take:take,filter:filter},succeededCallback,failedCallback,userContext); },
+setCustomTableData:function(key,jsonFieldGroupName,filter,data,createIfNotFound,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'setCustomTableData',false,{key:key,jsonFieldGroupName:jsonFieldGroupName,filter:filter,data:data,createIfNotFound:createIfNotFound},succeededCallback,failedCallback,userContext); },
+GetUserDetails:function(userDetailJsonFieldGroup,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetUserDetails',false,{userDetailJsonFieldGroup:userDetailJsonFieldGroup},succeededCallback,failedCallback,userContext); },
+SetUserDetails:function(userDetailJsonFieldGroup,userJsonFieldGroupData,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SetUserDetails',false,{userDetailJsonFieldGroup:userDetailJsonFieldGroup,userJsonFieldGroupData:userJsonFieldGroupData},succeededCallback,failedCallback,userContext); },
+GetProductsViewed:function(skip,take,recordLimit,listTemplateName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetProductsViewed',false,{skip:skip,take:take,recordLimit:recordLimit,listTemplateName:listTemplateName},succeededCallback,failedCallback,userContext); },
+LogProductViewed:function(productCode,price,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'LogProductViewed',false,{productCode:productCode,price:price},succeededCallback,failedCallback,userContext); },
+UserCustomerApproverSearch:function(emailAddress,customerCode,searchTerm,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'UserCustomerApproverSearch',false,{emailAddress:emailAddress,customerCode:customerCode,searchTerm:searchTerm},succeededCallback,failedCallback,userContext); },
+LoadUserCustomerApprovers:function(emailAddress,customerCode,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'LoadUserCustomerApprovers',false,{emailAddress:emailAddress,customerCode:customerCode},succeededCallback,failedCallback,userContext); },
+SaveUserCustomerApprovers:function(emailAddress,customerCode,selectedApprovers,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SaveUserCustomerApprovers',false,{emailAddress:emailAddress,customerCode:customerCode,selectedApprovers:selectedApprovers},succeededCallback,failedCallback,userContext); },
+GetWarehouseFreightAvailableWarehouses:function(succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetWarehouseFreightAvailableWarehouses',false,{},succeededCallback,failedCallback,userContext); },
+GetWarehouseFreightRegions:function(succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetWarehouseFreightRegions',false,{},succeededCallback,failedCallback,userContext); },
+GetWarehouseFreightRegionCalculations:function(regionName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetWarehouseFreightRegionCalculations',false,{regionName:regionName},succeededCallback,failedCallback,userContext); },
+DeleteWarehouseFreightRegion:function(regionName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'DeleteWarehouseFreightRegion',false,{regionName:regionName},succeededCallback,failedCallback,userContext); },
+AddWarehouseFreightRegion:function(regionName,postCodeRanges,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddWarehouseFreightRegion',false,{regionName:regionName,postCodeRanges:postCodeRanges},succeededCallback,failedCallback,userContext); },
+SaveWarehouseFreightRegion:function(regionName,newRegionName,postCodeRanges,calculations,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SaveWarehouseFreightRegion',false,{regionName:regionName,newRegionName:newRegionName,postCodeRanges:postCodeRanges,calculations:calculations},succeededCallback,failedCallback,userContext); },
+GetWarehouseFreightMethods:function(succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetWarehouseFreightMethods',false,{},succeededCallback,failedCallback,userContext); },
+GetWarehouseFreightMethodCalculations:function(productGroup,methodName,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetWarehouseFreightMethodCalculations',false,{productGroup:productGroup,methodName:methodName},succeededCallback,failedCallback,userContext); },
+AddWarehouseFreightMethod:function(freightMethodName,productGroup,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'AddWarehouseFreightMethod',false,{freightMethodName:freightMethodName,productGroup:productGroup},succeededCallback,failedCallback,userContext); },
+DeleteWarehouseFreightMethod:function(methodName,productGroup,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'DeleteWarehouseFreightMethod',false,{methodName:methodName,productGroup:productGroup},succeededCallback,failedCallback,userContext); },
+SaveWarehouseFreightMethod:function(methodName,newMethodName,group,newGroup,calculations,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SaveWarehouseFreightMethod',false,{methodName:methodName,newMethodName:newMethodName,group:group,newGroup:newGroup,calculations:calculations},succeededCallback,failedCallback,userContext); },
+SendWishlist:function(recipients,message,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'SendWishlist',false,{recipients:recipients,message:message},succeededCallback,failedCallback,userContext); }}
+CSSNET.WebServicesAjax.registerClass('CSSNET.WebServicesAjax',Sys.Net.WebServiceProxy);
+CSSNET.WebServicesAjax._staticInstance = new CSSNET.WebServicesAjax();
+CSSNET.WebServicesAjax.set_path = function(value) { CSSNET.WebServicesAjax._staticInstance.set_path(value); }
+CSSNET.WebServicesAjax.get_path = function() { return CSSNET.WebServicesAjax._staticInstance.get_path(); }
+CSSNET.WebServicesAjax.set_timeout = function(value) { CSSNET.WebServicesAjax._staticInstance.set_timeout(value); }
+CSSNET.WebServicesAjax.get_timeout = function() { return CSSNET.WebServicesAjax._staticInstance.get_timeout(); }
+CSSNET.WebServicesAjax.set_defaultUserContext = function(value) { CSSNET.WebServicesAjax._staticInstance.set_defaultUserContext(value); }
+CSSNET.WebServicesAjax.get_defaultUserContext = function() { return CSSNET.WebServicesAjax._staticInstance.get_defaultUserContext(); }
+CSSNET.WebServicesAjax.set_defaultSucceededCallback = function(value) { CSSNET.WebServicesAjax._staticInstance.set_defaultSucceededCallback(value); }
+CSSNET.WebServicesAjax.get_defaultSucceededCallback = function() { return CSSNET.WebServicesAjax._staticInstance.get_defaultSucceededCallback(); }
+CSSNET.WebServicesAjax.set_defaultFailedCallback = function(value) { CSSNET.WebServicesAjax._staticInstance.set_defaultFailedCallback(value); }
+CSSNET.WebServicesAjax.get_defaultFailedCallback = function() { return CSSNET.WebServicesAjax._staticInstance.get_defaultFailedCallback(); }
+CSSNET.WebServicesAjax.set_enableJsonp = function(value) { CSSNET.WebServicesAjax._staticInstance.set_enableJsonp(value); }
+CSSNET.WebServicesAjax.get_enableJsonp = function() { return CSSNET.WebServicesAjax._staticInstance.get_enableJsonp(); }
+CSSNET.WebServicesAjax.set_jsonpCallbackParameter = function(value) { CSSNET.WebServicesAjax._staticInstance.set_jsonpCallbackParameter(value); }
+CSSNET.WebServicesAjax.get_jsonpCallbackParameter = function() { return CSSNET.WebServicesAjax._staticInstance.get_jsonpCallbackParameter(); }
+CSSNET.WebServicesAjax.set_path("/WebServicesAjax.asmx");
+CSSNET.WebServicesAjax.GetProductAttributeValues= function(inputIdx,productCode,selectedTitleValue,selectDefaultProduct,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetProductAttributeValues(inputIdx,productCode,selectedTitleValue,selectDefaultProduct,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetProductAttributePrice= function(productCode,attributeSequence,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetProductAttributePrice(productCode,attributeSequence,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetProductAttributePriceGst= function(productCode,attributeSequence,priceTaxType,priceType,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetProductAttributePriceGst(productCode,attributeSequence,priceTaxType,priceType,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetProductAttributeAvailability= function(productCode,attributeSequence,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetProductAttributeAvailability(productCode,attributeSequence,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetAdminProductSuggestionItems= function(context,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetAdminProductSuggestionItems(context,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetProductSuggestionsItems= function(context,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetProductSuggestionsItems(context,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetProductDataForSelecteItem= function(productCodeTextBoxID,productCode,qty,orderNo,orderSuffix,orderGridMode,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetProductDataForSelecteItem(productCodeTextBoxID,productCode,qty,orderNo,orderSuffix,orderGridMode,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.PredictiveSearch= function(q,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.PredictiveSearch(q,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.PredictiveSearchJson= function(q,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.PredictiveSearchJson(q,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetFreight= function(onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetFreight(onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.SetFreight= function(freightOptionIDs,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.SetFreight(freightOptionIDs,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.FreightCalculator= function(productCode,quantity,postCode,suburb,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.FreightCalculator(productCode,quantity,postCode,suburb,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetPaymentOptions= function(onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetPaymentOptions(onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.ApplyPaymentSurcharge= function(orderNo,paymentMethod,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.ApplyPaymentSurcharge(orderNo,paymentMethod,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetPaymentProviderTitles= function(onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetPaymentProviderTitles(onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.ProcessPayment= function(paymentType,paymentInfo,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.ProcessPayment(paymentType,paymentInfo,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.SubmitQuote= function(onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.SubmitQuote(onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.EWayCreateAccessCode= function(clearRememberedPaymentInfo,orderNoForAccessCode,isAccountPayment,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.EWayCreateAccessCode(clearRememberedPaymentInfo,orderNoForAccessCode,isAccountPayment,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.AddAndTestGiftCardBeforeFundsTransfer= function(giftCardNumber,giftCardPin,useTotalAmount,amountToUse,customerPaymentReceiptNo,soOrderNo,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.AddAndTestGiftCardBeforeFundsTransfer(giftCardNumber,giftCardPin,useTotalAmount,amountToUse,customerPaymentReceiptNo,soOrderNo,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.RemoveGiftCardFromEnteredGiftCards= function(giftCardNumber,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.RemoveGiftCardFromEnteredGiftCards(giftCardNumber,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.AutoSaveTemplateData= function(name,type,autoSaveData,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.AutoSaveTemplateData(name,type,autoSaveData,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.RemoveAutoSaveReturnCurrentTemplateData= function(name,type,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.RemoveAutoSaveReturnCurrentTemplateData(name,type,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetInitialTemplateDisplayContent= function(name,type,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetInitialTemplateDisplayContent(name,type,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetAutoSaveTemplateData= function(name,type,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetAutoSaveTemplateData(name,type,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetTemplateData= function(name,type,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetTemplateData(name,type,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetTemplateRevisionData= function(templateHistoryID,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetTemplateRevisionData(templateHistoryID,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetRefreshOfTemplateSettingSources= function(settingSource,showLookup,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetRefreshOfTemplateSettingSources(settingSource,showLookup,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.AddTemplateSource= function(name,source,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.AddTemplateSource(name,source,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetCategoryHierarchy= function(catalogueCode,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetCategoryHierarchy(catalogueCode,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetAdvancedCategoryDetails= function(catalogueCode,categoryCode,loadAvailableTemplates,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetAdvancedCategoryDetails(catalogueCode,categoryCode,loadAvailableTemplates,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetClusterLineTypes= function(onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetClusterLineTypes(onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.SaveAdvancedCatalogueData= function(catalogueCode,data,deletedCategories,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.SaveAdvancedCatalogueData(catalogueCode,data,deletedCategories,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.ValidateProductCodes= function(productCodes,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.ValidateProductCodes(productCodes,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.Login= function(username,password,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.Login(username,password,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.Logout= function(onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.Logout(onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.IsLoggedIn= function(onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.IsLoggedIn(onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.RegisterNewUser= function(username,password,doLogin,userRegistrationJsonFieldGroup,userGeneralJsonFieldGroupData,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.RegisterNewUser(username,password,doLogin,userRegistrationJsonFieldGroup,userGeneralJsonFieldGroupData,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.RegisterNewUserWithAddressDetails= function(username,password,doLogin,userRegistrationJsonFieldGroup,userGeneralJsonFieldGroupData,userAddressJsonFieldGroup,userAddressJsonFieldGroupData,addressRuleSet,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.RegisterNewUserWithAddressDetails(username,password,doLogin,userRegistrationJsonFieldGroup,userGeneralJsonFieldGroupData,userAddressJsonFieldGroup,userAddressJsonFieldGroupData,addressRuleSet,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.ChangePassword= function(existingPwd,newPwd,newPwdCnfm,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.ChangePassword(existingPwd,newPwd,newPwdCnfm,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.ChangePasswordAndNotifyAddress= function(existingPwd,newPwd,newPwdCnfm,notifyEmailAdress,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.ChangePasswordAndNotifyAddress(existingPwd,newPwd,newPwdCnfm,notifyEmailAdress,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.RetrievePassword= function(username,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.RetrievePassword(username,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.AddFavourite= function(productCode,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.AddFavourite(productCode,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetCustomerWarningNote= function(customerCode,isAdminMode,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetCustomerWarningNote(customerCode,isAdminMode,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.AccountSearch= function(searchString,skip,take,jsonFieldGroup,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.AccountSearch(searchString,skip,take,jsonFieldGroup,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.SetCurrentAccount= function(accountCode,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.SetCurrentAccount(accountCode,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.ProductSearch= function(searchString,skip,take,orderBy,requestedDeliveryDate,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.ProductSearch(searchString,skip,take,orderBy,requestedDeliveryDate,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.ProductSearchWithFilter= function(searchString,filter,skip,take,orderBy,requestedDeliveryDate,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.ProductSearchWithFilter(searchString,filter,skip,take,orderBy,requestedDeliveryDate,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.ProductSearchWithListTemplate= function(searchString,filter,skip,take,listTemplateName,orderBy,requestedDeliveryDate,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.ProductSearchWithListTemplate(searchString,filter,skip,take,listTemplateName,orderBy,requestedDeliveryDate,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetProductDetail= function(productCode,requestedDeliveryDate,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetProductDetail(productCode,requestedDeliveryDate,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetCategoryDetail= function(categoryCode,skip,take,requestedDeliveryDate,jsonFieldGroup,jsonFieldGroupCurrentCategoryOverride,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetCategoryDetail(categoryCode,skip,take,requestedDeliveryDate,jsonFieldGroup,jsonFieldGroupCurrentCategoryOverride,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetProductCompanions= function(productCode,skip,take,requestedDeliveryDate,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetProductCompanions(productCode,skip,take,requestedDeliveryDate,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetProductAlternates= function(productCode,skip,take,requestedDeliveryDate,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetProductAlternates(productCode,skip,take,requestedDeliveryDate,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetProductAccessories= function(productCode,skip,take,requestedDeliveryDate,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetProductAccessories(productCode,skip,take,requestedDeliveryDate,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetProductAlternatesStatus= function(productCode,checkAlternates,checkAccessories,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetProductAlternatesStatus(productCode,checkAlternates,checkAccessories,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetCompanionProductOptions= function(masterProductCode,orderLineSeq,fieldsUsedForAlternatives,selectedCampProdCode,skip,take,productJsonFieldGroup,companionProdJsonFieldGroup,requestedDeliveryDate,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetCompanionProductOptions(masterProductCode,orderLineSeq,fieldsUsedForAlternatives,selectedCampProdCode,skip,take,productJsonFieldGroup,companionProdJsonFieldGroup,requestedDeliveryDate,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.SimpleAdminProductSearch= function(searchTerm,take,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.SimpleAdminProductSearch(searchTerm,take,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetProductDetailWithConfigurableKitOptions= function(productCode,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetProductDetailWithConfigurableKitOptions(productCode,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetKitConfigurationOptionsForProductOrOrderLine= function(productCode,lineSeq,serverTemplate,getMandatoryComponents,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetKitConfigurationOptionsForProductOrOrderLine(productCode,lineSeq,serverTemplate,getMandatoryComponents,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.SetProductSelctedKitConfigurationOptions= function(prodcode,configurableBomLineTypesAndCompCodes,optionalCompCodesAndInput,lineSeq,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.SetProductSelctedKitConfigurationOptions(prodcode,configurableBomLineTypesAndCompCodes,optionalCompCodesAndInput,lineSeq,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetOrderDetail= function(orderNumber,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetOrderDetail(orderNumber,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetCurrentOrder= function(onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetCurrentOrder(onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetCurrentCustomerOrderDefaults= function(onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetCurrentCustomerOrderDefaults(onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.UpdateCurrentOrderDeliveryAddress= function(deliveryAddressJsonFieldGroup,deliveryAddressJsonFieldGroupData,delivMethodSeqValueForLookup,setDeliveryOptions,pickListOptionSelected,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.UpdateCurrentOrderDeliveryAddress(deliveryAddressJsonFieldGroup,deliveryAddressJsonFieldGroupData,delivMethodSeqValueForLookup,setDeliveryOptions,pickListOptionSelected,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.AddToCurrentOrder= function(productCode,quantity,attributes,notes,noteIsExtendedLineDescription,price,discount,requestedDeliveryDate,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.AddToCurrentOrder(productCode,quantity,attributes,notes,noteIsExtendedLineDescription,price,discount,requestedDeliveryDate,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.AddToCurrentOrderWithFieldGroup= function(productCode,quantity,attributes,notes,noteIsExtendedLineDescription,price,discount,requestedDeliveryDate,orderJsonFieldGroup,orderLineJsonFieldGroup,customSetJsonFieldGroup,orderLineJsonFieldData,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.AddToCurrentOrderWithFieldGroup(productCode,quantity,attributes,notes,noteIsExtendedLineDescription,price,discount,requestedDeliveryDate,orderJsonFieldGroup,orderLineJsonFieldGroup,customSetJsonFieldGroup,orderLineJsonFieldData,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.AddToCurrentUserStocktake= function(productCode,quantity,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.AddToCurrentUserStocktake(productCode,quantity,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.ChangeCurrentOrderLine= function(sequence,qty,price,discount,deliveryDate,notes,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.ChangeCurrentOrderLine(sequence,qty,price,discount,deliveryDate,notes,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.ChangeCurrentOrderLineWithCustomFields= function(sequence,qty,price,discount,deliveryDate,notes,customSetJsonFieldGroup,orderLineJsonFieldData,orderJsonFieldGroup,orderLineJsonFieldGroup,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.ChangeCurrentOrderLineWithCustomFields(sequence,qty,price,discount,deliveryDate,notes,customSetJsonFieldGroup,orderLineJsonFieldData,orderJsonFieldGroup,orderLineJsonFieldGroup,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.ChangeCurrentOrderLines= function(newLineInfo,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.ChangeCurrentOrderLines(newLineInfo,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.ChangeCurrentOrderLinesWithCustomFields= function(customSetJsonFieldGroup,orderLineJsonFieldData,orderJsonFieldGroup,orderLineJsonFieldGroup,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.ChangeCurrentOrderLinesWithCustomFields(customSetJsonFieldGroup,orderLineJsonFieldData,orderJsonFieldGroup,orderLineJsonFieldGroup,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.DeleteCurrentOrderLine= function(sequence,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.DeleteCurrentOrderLine(sequence,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.DeleteCurrentOrderLineWithFieldGroup= function(sequence,orderJsonFieldGroup,orderLineJsonFieldGroup,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.DeleteCurrentOrderLineWithFieldGroup(sequence,orderJsonFieldGroup,orderLineJsonFieldGroup,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.SaveCurrentOrderAsTemplate= function(templateName,allcust,allreps,CustTemplate,globalCustomerMask,roleTemplate,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.SaveCurrentOrderAsTemplate(templateName,allcust,allreps,CustTemplate,globalCustomerMask,roleTemplate,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.PutCurrentOrderOnHold= function(onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.PutCurrentOrderOnHold(onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.AddOrderLineNotes= function(sequence,notes,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.AddOrderLineNotes(sequence,notes,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.AddOrderLineNotesWithFieldGroup= function(sequence,notes,orderJsonFieldGroup,orderLineJsonFieldGroup,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.AddOrderLineNotesWithFieldGroup(sequence,notes,orderJsonFieldGroup,orderLineJsonFieldGroup,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.DeleteOrderLineNotes= function(sequences,resequenceLines,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.DeleteOrderLineNotes(sequences,resequenceLines,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.DeleteOrderLineNotesWithFieldGroup= function(sequences,orderJsonFieldGroup,orderLineJsonFieldGroup,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.DeleteOrderLineNotesWithFieldGroup(sequences,orderJsonFieldGroup,orderLineJsonFieldGroup,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.UpdateOrderLineNote= function(sequence,note,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.UpdateOrderLineNote(sequence,note,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.UpdateOrderLineNoteWithFieldGroup= function(sequence,note,orderJsonFieldGroup,orderLineJsonFieldGroup,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.UpdateOrderLineNoteWithFieldGroup(sequence,note,orderJsonFieldGroup,orderLineJsonFieldGroup,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.AddCompanionProductToCurrentOrder= function(parentLineSeq,masterProductCode,companionProductCode,qty,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.AddCompanionProductToCurrentOrder(parentLineSeq,masterProductCode,companionProductCode,qty,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.AddCompanionProductsToCurrentOrder= function(parentLineSeq,masterProductCode,companProdsAndQty,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.AddCompanionProductsToCurrentOrder(parentLineSeq,masterProductCode,companProdsAndQty,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.SetCurrentOrderLineCustomItemOptions= function(sequence,customItemOptions,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.SetCurrentOrderLineCustomItemOptions(sequence,customItemOptions,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.SetCurrentOrderLineUserImage= function(sequence,userImageId,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.SetCurrentOrderLineUserImage(sequence,userImageId,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetOrderLinesMissingMandatoryCompanionProducts= function(onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetOrderLinesMissingMandatoryCompanionProducts(onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.ValidateCurrentOrderForCheckout= function(onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.ValidateCurrentOrderForCheckout(onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.ApplyCurrentOrderPromotionalCode= function(promoCode,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.ApplyCurrentOrderPromotionalCode(promoCode,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.RemoveCurrentOrderPromotionalCode= function(promoCode,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.RemoveCurrentOrderPromotionalCode(promoCode,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.ApplyPreExistingPromotionalCodes= function(onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.ApplyPreExistingPromotionalCodes(onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.UpdateLivePromotionInfo= function(sequence,productCode,quantityTaken,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.UpdateLivePromotionInfo(sequence,productCode,quantityTaken,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.SetCurrentOrderPricingAccount= function(pricingAccount,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.SetCurrentOrderPricingAccount(pricingAccount,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetActiveUserImagesForUserByType= function(skip,take,imageUseType,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetActiveUserImagesForUserByType(skip,take,imageUseType,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetParsedTemplate= function(templateName,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetParsedTemplate(templateName,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetCustomTableData= function(key,jsonFieldGroupName,skip,take,filter,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetCustomTableData(key,jsonFieldGroupName,skip,take,filter,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.setCustomTableData= function(key,jsonFieldGroupName,filter,data,createIfNotFound,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.setCustomTableData(key,jsonFieldGroupName,filter,data,createIfNotFound,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetUserDetails= function(userDetailJsonFieldGroup,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetUserDetails(userDetailJsonFieldGroup,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.SetUserDetails= function(userDetailJsonFieldGroup,userJsonFieldGroupData,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.SetUserDetails(userDetailJsonFieldGroup,userJsonFieldGroupData,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetProductsViewed= function(skip,take,recordLimit,listTemplateName,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetProductsViewed(skip,take,recordLimit,listTemplateName,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.LogProductViewed= function(productCode,price,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.LogProductViewed(productCode,price,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.UserCustomerApproverSearch= function(emailAddress,customerCode,searchTerm,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.UserCustomerApproverSearch(emailAddress,customerCode,searchTerm,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.LoadUserCustomerApprovers= function(emailAddress,customerCode,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.LoadUserCustomerApprovers(emailAddress,customerCode,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.SaveUserCustomerApprovers= function(emailAddress,customerCode,selectedApprovers,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.SaveUserCustomerApprovers(emailAddress,customerCode,selectedApprovers,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetWarehouseFreightAvailableWarehouses= function(onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetWarehouseFreightAvailableWarehouses(onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetWarehouseFreightRegions= function(onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetWarehouseFreightRegions(onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetWarehouseFreightRegionCalculations= function(regionName,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetWarehouseFreightRegionCalculations(regionName,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.DeleteWarehouseFreightRegion= function(regionName,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.DeleteWarehouseFreightRegion(regionName,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.AddWarehouseFreightRegion= function(regionName,postCodeRanges,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.AddWarehouseFreightRegion(regionName,postCodeRanges,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.SaveWarehouseFreightRegion= function(regionName,newRegionName,postCodeRanges,calculations,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.SaveWarehouseFreightRegion(regionName,newRegionName,postCodeRanges,calculations,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetWarehouseFreightMethods= function(onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetWarehouseFreightMethods(onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.GetWarehouseFreightMethodCalculations= function(productGroup,methodName,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.GetWarehouseFreightMethodCalculations(productGroup,methodName,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.AddWarehouseFreightMethod= function(freightMethodName,productGroup,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.AddWarehouseFreightMethod(freightMethodName,productGroup,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.DeleteWarehouseFreightMethod= function(methodName,productGroup,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.DeleteWarehouseFreightMethod(methodName,productGroup,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.SaveWarehouseFreightMethod= function(methodName,newMethodName,group,newGroup,calculations,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.SaveWarehouseFreightMethod(methodName,newMethodName,group,newGroup,calculations,onSuccess,onFailed,userContext); }
+CSSNET.WebServicesAjax.SendWishlist= function(recipients,message,onSuccess,onFailed,userContext) {CSSNET.WebServicesAjax._staticInstance.SendWishlist(recipients,message,onSuccess,onFailed,userContext); }
+var gtc = Sys.Net.WebServiceProxy._generateTypedConstructor;
+Type.registerNamespace('DataObjects');
+if (typeof(DataObjects.WebServiceAjaxItemData) === 'undefined') {
+DataObjects.WebServiceAjaxItemData=gtc("DataObjects.WebServiceAjaxItemData");
+DataObjects.WebServiceAjaxItemData.registerClass('DataObjects.WebServiceAjaxItemData');
+}
+Type.registerNamespace('BusinessObjects');
+if (typeof(BusinessObjects.FreightOptionsHeader) === 'undefined') {
+BusinessObjects.FreightOptionsHeader=gtc("BusinessObjects.FreightOptionsHeader");
+BusinessObjects.FreightOptionsHeader.registerClass('BusinessObjects.FreightOptionsHeader');
+}
+if (typeof(BusinessObjects.PaymentProcessingResult) === 'undefined') {
+BusinessObjects.PaymentProcessingResult=gtc("BusinessObjects.PaymentProcessingResult");
+BusinessObjects.PaymentProcessingResult.registerClass('BusinessObjects.PaymentProcessingResult');
+}
+if (typeof(BusinessObjects.GiftCardProcessingHelper) === 'undefined') {
+BusinessObjects.GiftCardProcessingHelper=gtc("BusinessObjects.GiftCardProcessingHelper");
+BusinessObjects.GiftCardProcessingHelper.registerClass('BusinessObjects.GiftCardProcessingHelper');
+}
+if (typeof(DataObjects.TemplateResults) === 'undefined') {
+DataObjects.TemplateResults=gtc("DataObjects.TemplateResults");
+DataObjects.TemplateResults.registerClass('DataObjects.TemplateResults');
+}
+if (typeof(DataObjects.ClusterLineType) === 'undefined') {
+DataObjects.ClusterLineType=gtc("DataObjects.ClusterLineType");
+DataObjects.ClusterLineType.registerClass('DataObjects.ClusterLineType');
+}
+if (typeof(DataObjects.LoginResult) === 'undefined') {
+DataObjects.LoginResult=gtc("DataObjects.LoginResult");
+DataObjects.LoginResult.registerClass('DataObjects.LoginResult');
+}
+if (typeof(DataObjects.LogoutResult) === 'undefined') {
+DataObjects.LogoutResult=gtc("DataObjects.LogoutResult");
+DataObjects.LogoutResult.registerClass('DataObjects.LogoutResult');
+}
+if (typeof(DataObjects.RegisterUserResult) === 'undefined') {
+DataObjects.RegisterUserResult=gtc("DataObjects.RegisterUserResult");
+DataObjects.RegisterUserResult.registerClass('DataObjects.RegisterUserResult');
+}
+if (typeof(DataObjects.PasswordChangeResult) === 'undefined') {
+DataObjects.PasswordChangeResult=gtc("DataObjects.PasswordChangeResult");
+DataObjects.PasswordChangeResult.registerClass('DataObjects.PasswordChangeResult');
+}
+if (typeof(DataObjects.SetAccountResult) === 'undefined') {
+DataObjects.SetAccountResult=gtc("DataObjects.SetAccountResult");
+DataObjects.SetAccountResult.registerClass('DataObjects.SetAccountResult');
+}
+if (typeof(DataObjects.CurrentCustomerOrderDefaultsResult) === 'undefined') {
+DataObjects.CurrentCustomerOrderDefaultsResult=gtc("DataObjects.CurrentCustomerOrderDefaultsResult");
+DataObjects.CurrentCustomerOrderDefaultsResult.registerClass('DataObjects.CurrentCustomerOrderDefaultsResult');
+}
+if (typeof(DataObjects.NewLineInformation) === 'undefined') {
+DataObjects.NewLineInformation=gtc("DataObjects.NewLineInformation");
+DataObjects.NewLineInformation.registerClass('DataObjects.NewLineInformation');
+}
+if (typeof(DataObjects.ValidateCurrentOrderForCheckoutResult) === 'undefined') {
+DataObjects.ValidateCurrentOrderForCheckoutResult=gtc("DataObjects.ValidateCurrentOrderForCheckoutResult");
+DataObjects.ValidateCurrentOrderForCheckoutResult.registerClass('DataObjects.ValidateCurrentOrderForCheckoutResult');
+}
+if (typeof(DataObjects.PromotionalCodesValidateCurrentOrderResult) === 'undefined') {
+DataObjects.PromotionalCodesValidateCurrentOrderResult=gtc("DataObjects.PromotionalCodesValidateCurrentOrderResult");
+DataObjects.PromotionalCodesValidateCurrentOrderResult.registerClass('DataObjects.PromotionalCodesValidateCurrentOrderResult');
+}
+if (typeof(DataObjects.UserImageResult) === 'undefined') {
+DataObjects.UserImageResult=gtc("DataObjects.UserImageResult");
+DataObjects.UserImageResult.registerClass('DataObjects.UserImageResult');
+}
+if (typeof(BusinessObjects.ImageUseTypeEnum) === 'undefined') {
+BusinessObjects.ImageUseTypeEnum = function() { throw Error.invalidOperation(); }
+BusinessObjects.ImageUseTypeEnum.prototype = {NotSet: 0,UserPrescriptionGlasses: 1}
+BusinessObjects.ImageUseTypeEnum.registerEnum('BusinessObjects.ImageUseTypeEnum', true);
+}

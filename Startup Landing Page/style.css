@@ -1,0 +1,20 @@
+body, html{
+	height: 100%;
+	width: 100%;
+}
+
+.startup{
+	height: 100%;
+	background-image: url("hp.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.row{
+	margin-top: 60px;
+}
+
+h1 {
+	font-size: 1.85rem;
+}

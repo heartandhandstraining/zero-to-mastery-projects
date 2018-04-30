@@ -1,0 +1,499 @@
+/* Commerce Vision (Customer Self Service Implementation)
+ * Created By:  Ben Demeyere (Commerce Vision)
+*/
+/* Sub-section comment block
+   ========================================================================== */
+/* Usage
+
+div.logo {
+   background: url("logo.png") no-repeat;
+   @include image-2x("logo2x.png", 100px, 25px);
+ } 
+
+ */
+/* Clearfix
+  ========================================================================== */
+/* Usage 
+
+.article {
+     @include clearfix();
+}
+
+*/
+/* Box Model
+  ========================================================================== */
+/* Usage 
+
+*,
+*:after,
+*:before {
+  @include box-sizing(border-box);
+}
+
+*/
+/* Border Radius
+  ========================================================================== */
+/* Usage 
+
+.button {
+  @include border-radius(5px);
+}
+
+.submit-button{
+  @include border-top-radius(10px);
+}
+
+*/
+/* Opacity
+  ========================================================================== */
+/* Usage 
+
+.article-heading {
+  @include opacity(0.8);
+}
+
+*/
+/* Center-align a block level element
+  ========================================================================== */
+/* Usage 
+
+.footer-wrap {
+  width: 450px;
+  @include center-block;
+}
+
+*/
+/* Text overflow
+  ========================================================================== */
+/* Usage 
+
+.text-truncate {
+  @include text-truncate;
+}
+
+*/
+/* Absolute positioned
+  ========================================================================== */
+/* Usage 
+
+.abs {
+  @include abs-pos(10px, 10px, 5px, 15px);
+}
+
+*/
+/* Font Size
+  ========================================================================== */
+/* Usage 
+
+body {
+  @include font-size(16);
+}
+
+*/
+/* Line Height
+  ========================================================================== */
+/* Usage 
+
+body {
+  @include line-height (16);
+}
+
+*/
+/* Cross browser inline block
+  ========================================================================== */
+/* Usage 
+
+.icon {
+	@include inline-block();
+}
+*/
+/* Text replacement (instead of text-indent)
+  ========================================================================== */
+/* Usage 
+
+.header h1 {
+	@include text-replacement();
+}
+
+*/
+/**
+ * source: tooltip-core.scss
+ *
+ * Defines the basic styling for the tooltip.
+ * Each tooltip is made of 2 parts:
+ * 	1) body (:after)
+ * 	2) arrow (:before)
+ * 
+ * Classes added:
+ * 	1) tooltip
+ */
+.tooltip, [data-tooltip] {
+  position: relative;
+  display: inline-block;
+  /**
+   * tooltip arrow
+   */
+  /**
+   * tooltip body
+   */
+}
+.tooltip:before, .tooltip:after, [data-tooltip]:before, [data-tooltip]:after {
+  position: absolute;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1000000;
+  pointer-events: none;
+  -webkit-transition: 0.3s ease;
+  -moz-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+.tooltip:hover:before, .tooltip:hover:after, .tooltip:focus:before, .tooltip:focus:after, [data-tooltip]:hover:before, [data-tooltip]:hover:after, [data-tooltip]:focus:before, [data-tooltip]:focus:after {
+  visibility: visible;
+  opacity: 1;
+}
+.tooltip:before, [data-tooltip]:before {
+  content: '';
+  position: absolute;
+  background: transparent;
+  border: 6px solid transparent;
+  z-index: 1000001;
+}
+.tooltip:after, [data-tooltip]:after {
+  content: attr(data-tooltip);
+  background: #383838;
+  color: white;
+  text-shadow: 0 -1px 0px black;
+  padding: 8px 10px;
+  font-size: 12px;
+  line-height: 12px;
+  white-space: nowrap;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/**
+ * source: tooltip-position.scss
+ *
+ * Defines the positoning logic for the tooltips.
+ * 
+ * Classes added:
+ * 	1) tooltip-top
+ * 	2) tooltip-bottom
+ * 	3) tooltip-left
+ * 	4) tooltip-right
+ */
+/**
+ * set default color for tooltip arrows
+ */
+.tooltip-top:before {
+  border-top-color: #383838;
+}
+
+.tooltip-bottom:before {
+  border-bottom-color: #383838;
+}
+
+.tooltip-left:before {
+  border-left-color: #383838;
+}
+
+.tooltip-right:before {
+  border-right-color: #383838;
+}
+
+/**
+ * top tooltip
+ */
+.tooltip-top:before {
+  margin-bottom: -12px;
+}
+.tooltip-top:after {
+  margin-left: -18px;
+}
+.tooltip-top:before, .tooltip-top:after {
+  bottom: 100%;
+  left: 18px;
+}
+.tooltip-top:hover:after, .tooltip-top:hover:before, .tooltip-top:focus:after, .tooltip-top:focus:before {
+  -webkit-transform: translateY(-8px);
+  -moz-transform: translateY(-8px);
+  transform: translateY(-8px);
+}
+
+/**
+ * bottom tooltip
+ */
+.tooltip-bottom:before {
+  margin-top: -12px;
+}
+.tooltip-bottom:after {
+  margin-left: -18px;
+}
+.tooltip-bottom:before, .tooltip-bottom:after {
+  top: 100%;
+  left: 18px;
+}
+.tooltip-bottom:hover:after, .tooltip-bottom:hover:before, .tooltip-bottom:focus:after, .tooltip-bottom:focus:before {
+  -webkit-transform: translateY(8px);
+  -moz-transform: translateY(8px);
+  transform: translateY(8px);
+}
+
+/**
+ * right tooltip
+ */
+.tooltip-right:before {
+  margin-left: -12px;
+  margin-bottom: -6px;
+}
+.tooltip-right:after {
+  margin-bottom: -14px;
+}
+.tooltip-right:before, .tooltip-right:after {
+  left: 100%;
+  bottom: 50%;
+}
+.tooltip-right:hover:after, .tooltip-right:hover:before, .tooltip-right:focus:after, .tooltip-right:focus:before {
+  -webkit-transform: translateX(8px);
+  -moz-transform: translateX(8px);
+  transform: translateX(8px);
+}
+
+/**
+ * left tooltip
+ */
+.tooltip-left:before {
+  margin-right: -12px;
+  margin-bottom: -6px;
+}
+.tooltip-left:after {
+  margin-bottom: -14px;
+}
+.tooltip-left:before, .tooltip-left:after {
+  right: 100%;
+  bottom: 50%;
+}
+.tooltip-left:hover:after, .tooltip-left:hover:before, .tooltip-left:focus:after, .tooltip-left:focus:before {
+  -webkit-transform: translateX(-8px);
+  -moz-transform: translateX(-8px);
+  transform: translateX(-8px);
+}
+
+/**
+ * source: tooltip-color-types.scss
+ *
+ * Contains tooltips of various types based on color differences.
+ * 
+ * Classes added:
+ * 	1) tooltip-error
+ * 	2) tooltip-warning
+ * 	3) tooltip-info
+ * 	4) tooltip-success
+ * 	
+ */
+/**
+ * Error
+ */
+.tooltip-error:after {
+  background-color: #ed1c24;
+  text-shadow: 1px 1px 0px #7f0a0f;
+}
+.tooltip-error.tooltip-top:before {
+  border-top-color: #ed1c24;
+}
+.tooltip-error.tooltip-bottom:before {
+  border-bottom-color: #ed1c24;
+}
+.tooltip-error.tooltip-left:before {
+  border-left-color: #ed1c24;
+}
+.tooltip-error.tooltip-right:before {
+  border-right-color: #ed1c24;
+}
+
+/**
+ * Warning
+ */
+.tooltip-warning:after {
+  background-color: #ff952d;
+  text-shadow: 1px 1px 0px #ad5500;
+}
+.tooltip-warning.tooltip-top:before {
+  border-top-color: #ff952d;
+}
+.tooltip-warning.tooltip-bottom:before {
+  border-bottom-color: #ff952d;
+}
+.tooltip-warning.tooltip-left:before {
+  border-left-color: #ff952d;
+}
+.tooltip-warning.tooltip-right:before {
+  border-right-color: #ff952d;
+}
+
+/**
+ * Info
+ */
+.tooltip-info:after {
+  background-color: #4a87f8;
+  text-shadow: 1px 1px 0px #0746bb;
+}
+.tooltip-info.tooltip-top:before {
+  border-top-color: #4a87f8;
+}
+.tooltip-info.tooltip-bottom:before {
+  border-bottom-color: #4a87f8;
+}
+.tooltip-info.tooltip-left:before {
+  border-left-color: #4a87f8;
+}
+.tooltip-info.tooltip-right:before {
+  border-right-color: #4a87f8;
+}
+
+/**
+ * Success
+ */
+.tooltip-success:after {
+  background-color: #60be50;
+  text-shadow: 1px 1px 0px #306827;
+}
+.tooltip-success.tooltip-top:before {
+  border-top-color: #60be50;
+}
+.tooltip-success.tooltip-bottom:before {
+  border-bottom-color: #60be50;
+}
+.tooltip-success.tooltip-left:before {
+  border-left-color: #60be50;
+}
+.tooltip-success.tooltip-right:before {
+  border-right-color: #60be50;
+}
+
+/**
+ * source: tooltip-always.scss
+ *
+ * Defines a persisted tooltip which shows always.
+ * 
+ * Classes added:
+ * 	1) tooltip-always
+ * 	
+ */
+.tooltip-always:after, .tooltip-always:before {
+  opacity: 1;
+  visibility: visible;
+}
+.tooltip-always.tooltip-top:after, .tooltip-always.tooltip-top:before {
+  -webkit-transform: translateY(-8px);
+  -moz-transform: translateY(-8px);
+  transform: translateY(-8px);
+}
+.tooltip-always.tooltip-bottom:after, .tooltip-always.tooltip-bottom:before {
+  -webkit-transform: translateY(8px);
+  -moz-transform: translateY(8px);
+  transform: translateY(8px);
+}
+.tooltip-always.tooltip-left:after, .tooltip-always.tooltip-left:before {
+  -webkit-transform: translateX(-8px);
+  -moz-transform: translateX(-8px);
+  transform: translateX(-8px);
+}
+.tooltip-always.tooltip-right:after, .tooltip-always.tooltip-right:before {
+  -webkit-transform: translateX(8px);
+  -moz-transform: translateX(8px);
+  transform: translateX(8px);
+}
+
+/**
+ * source: tooltip-rounded.scss
+ *
+ * Defines rounded corner tooltips.
+ * 
+ * Classes added:
+ * 	1) tooltip-rounded
+ *  
+ */
+.tooltip-rounded:after {
+  border-radius: 4px;
+}
+
+/**
+ * source: tooltip-effects.scss
+ *
+ * Defines various transition effects for the tooltips.
+ * 
+ * Classes added:
+ * 	1) tooltip-bounce
+ * 	
+ */
+.tooltip-bounce:before, .tooltip-bounce:after {
+  -webkit-transition: opacity 0.3s ease, visibility 0.3s ease, -webkit-transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+  -moz-transition: opacity 0.3s ease, visibility 0.3s ease, -moz-transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+}
+
+.validation .tooltip-top, .validation .tooltip-right, .validation .tooltip-bottom, .validation .tooltip-left {
+  display: block;
+}
+
+.validation.error input[type="text"], .validation.error input[type="number"], .validation.error input[type="password"], .validation.error input[type="email"] {
+  border-left: 2px solid #f14b52;
+  border-radius: 0 3px 3px 0;
+  background: white;
+  outline: none;
+  -webkit-appearance: none !important;
+}
+
+.validation.warning input[type="text"], .validation.warning input[type="number"], .validation.warning input[type="password"], .validation.warning input[type="email"] {
+  border-left: 2px solid #ff952d;
+  border-radius: 0 3px 3px 0;
+  background: white;
+  outline: none;
+  -webkit-appearance: none !important;
+}
+
+.validation.info input[type="text"], .validation.info input[type="number"], .validation.info input[type="password"], .validation.info input[type="email"] {
+  border-left: 2px solid #4a87f8;
+  border-radius: 0 3px 3px 0;
+  background: white;
+  outline: none;
+  -webkit-appearance: none !important;
+}
+
+.validation.success input[type="text"], .validation.success input[type="number"], .validation.success input[type="password"], .validation.success input[type="email"] {
+  border-left: 2px solid #60be50;
+  border-radius: 0 3px 3px 0;
+  background: white;
+  outline: none;
+  -webkit-appearance: none !important;
+}
+
+
+
+
+.validation.error .form-select {
+  border-left: 2px solid #f14b52;
+  border-radius: 0;
+  outline: none;
+}
+
+.validation.warning .form-select {
+  border-left: 2px solid #ff952d;
+  border-radius: 0;
+  outline: none;
+}
+
+.validation.info .form-select {
+  border-left: 2px solid #4a87f8;
+  border-radius: 0;
+  outline: none;
+}
+
+.validation.success .form-select {
+  border-left: 2px solid #60be50;
+  border-radius: 0;
+  outline: none;
+}

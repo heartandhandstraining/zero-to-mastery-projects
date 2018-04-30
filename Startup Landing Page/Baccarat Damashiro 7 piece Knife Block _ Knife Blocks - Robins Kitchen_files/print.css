@@ -1,0 +1,152 @@
+/* Commerce Vision (Customer Self Service Implementation)
+ * Stylesheet:  Print Styles
+ * Created By:  Ben Demeyere (Commerce Vision)
+*/
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: h5bp.com/r
+   ========================================================================== */
+@media print {
+  * {
+    background: transparent !important;
+    color: #000 !important;
+    /* Black prints faster: h5bp.com/s */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  /*
+   * Don't show links for images, or javascript/internal links
+   */
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+    /* h5bp.com/t */
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    width: auto;
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: 0.5cm;
+}
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  footer {
+    display: none;
+  }
+
+  .top-bar {
+    display: none;
+  }
+
+  .need-help, .header-banners, .header-cart, .product-search {
+    display: none;
+  }
+
+  nav {
+    display: none;
+  }
+
+  nav.mobile-menu {
+    display: none !important;
+  }
+
+  .breadcrumbs {
+    display: none;
+  }
+
+  .Cart-BannerHelp {
+    display: none;
+  }
+
+  .checkout-buttons {
+    display: none;
+  }
+
+  .btn-giftcards.notify-view {
+    display: none;
+  }
+
+  .btn-editorder {
+    display: none;
+  }
+
+  .btn-print {
+    display: none;
+  }
+
+  .button-shipping-schedule img {
+    display: none;
+  }
+
+
+
+
+
+}
+
+
+/* ==========================================================================
+   CV STANDARD NAV THEME 999 Print styles.
+   
+   ========================================================================== */
+@media print {
+  #formOrderSearch #pnlPrint input {
+    display: none;
+  }
+
+  #formOrderSearch #totalsframe {
+    border: none !important;
+  }
+
+  #formOrderSearch #totalsframe * {
+    border: none !important;
+  }
+
+}
+
+
+

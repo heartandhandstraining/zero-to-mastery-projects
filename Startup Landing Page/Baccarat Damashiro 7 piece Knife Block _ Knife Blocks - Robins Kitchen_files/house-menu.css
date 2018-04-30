@@ -1,0 +1,72 @@
+.cv-menus {
+	clear: both;
+	display: block;
+	width: 100%;
+}
+
+.cv-menus {
+	border-top: 2px solid #f1eded;
+	padding-top: 2px;
+	padding-left: 0;
+}
+
+.cv-menus .container {
+	width: 100%;
+	background: #f1eded;
+}
+
+.widget-navigation-menu .dropdown-area, .widget-mega-menu .dropdown-area {
+	background: #e6dfdf;
+
+}
+
+.widget-navigation-menu .dropdown-area li a, .widget-mega-menu .dropdown-area li a {
+	color: black;
+}
+
+.widget-navigation-menu .dropdown-area li a:hover, .widget-mega-menu .dropdown-area li a:hover {
+	color: black;
+	background: #d0c2c2;
+}
+
+.widget-navigation-menu .dropdown-area .mm-heading, .widget-mega-menu .dropdown-area .mm-heading {
+	background: none;
+	color: black;
+	border-bottom: 1px solid #d0c2c2;
+	padding-left: 3px;
+	width: 69%;
+	
+}
+
+.widget-navigation-menu .dropdown-area .mm-heading:hover, .widget-mega-menu .dropdown-area .mm-heading:hover {
+	background: #d0c2c2;
+	color: black;
+}
+
+.widget-navigation-menu .dropdown-area a.mm-heading:hover, .widget-mega-menu .dropdown-area a.mm-heading:hover {
+	color: black;
+}
+
+
+
+
+.cv-ico-general-arrow-down5.ico-right:after {
+	content: "";
+	display: inline-block;
+	float: right;
+	width: 12px;
+	height: 12px;
+	background: #f1eded url("/images/TemplateImages/icons/mm-arrow-active.png") 0 0 no-repeat;
+	background-size: 100%;
+	position: relative;
+    top: 4px;
+    left: 6px;
+}
+
+.widget-mega-menu ul > li:hover > a.cv-ico-general-arrow-down5.ico-right:after {
+	background: #e6dfdf url("/images/TemplateImages/icons/mm-arrow-hover.png") 0 0 no-repeat;
+}
+
+/*.widget-navigation-menu ul > li:hover > a, .widget-mega-menu ul > li:hover > a {
+	background: #e6dfdf url("/images/TemplateImages/icons/mm-arrow-hover.png") 98% 45% no-repeat;
+}*/
